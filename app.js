@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const _ = require("lodash");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://dbRitik:ritik21@cluster0.e7l3k.mongodb.net/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -20,14 +20,14 @@ const itemsSchema = {
 const Item = mongoose.model("Item",itemsSchema);
 
 const item1 = new Item({
-  name:"Welcome to your to do list!"
+  name:"This To-Do list is crearted by Ritik Kundlas for the World ! "
 });
 const item2 = new Item({
   name:"Press the + button to start adding new task for the day !"
 });
 
 const item3 = new Item({
-  name:"<-- Hit this to delete an item"
+  name:"Let's get started , have fun ."
 }) ;
 
 
@@ -152,8 +152,9 @@ app.post("/delete",function(req,res){
   {
     if(err)
     console.log(err);
-    else
+    else{
     console.log("Success");
+    res.redirect("/");}
   });
   }
   else {
@@ -167,9 +168,7 @@ app.post("/delete",function(req,res){
 // res.redirect("/"+customListName);
 })
 
-app.get("/work", function(req,res){
-  res.render("list", {listTitle: "Work List", newListItems: workItems});
-});
+
 
 app.get("/about", function(req, res){
   res.render("about");
@@ -178,7 +177,7 @@ app.get("/about", function(req, res){
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 3000;
 }
 
 

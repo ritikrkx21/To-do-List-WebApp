@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const _ = require("lodash");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://dbRitik:ritik21@cluster0.e7l3k.mongodb.net/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true,  useFindAndModify: false});
 const app = express();
 
 app.set('view engine', 'ejs');
